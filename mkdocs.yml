@@ -1,0 +1,13 @@
+site_name: Algone
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+nav:
+    - Welcome: index.md
+    - 'Getting started': 
+        - 'Installation': getting_started/installation.md
+        - 'Simple neural network': getting_started/simple_neural_network.md
+    - 'Tutorials':
+        - 'MNIST': tutorials/mnist.md
