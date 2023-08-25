@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+permissions: write-all
 jobs:
   release:
     name: Create GitHub Release
