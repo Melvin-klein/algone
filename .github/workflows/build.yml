@@ -10,7 +10,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Install dependencies
-              run: apt update && apt install check
+              run: sudo apt-get update && sudo apt install -y check
             - name: Test
               run: make tests
             - name: Build
