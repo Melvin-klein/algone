@@ -1,20 +1,71 @@
 name: Build Library
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
 jobs:
-    ubuntu:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
-            - name: Install dependencies
-              run: sudo apt-get update && sudo apt install -y check automake autoconf libtool pkg-config texinfo
-            - name: Build
-              run: make build
-            - name: Release
-              uses: softprops/action-gh-release@v1
-              with:
-                files: |
-                    bin/libalgone.a
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    outputs:
+      release_id: ${{ steps.create_release.outputs.id }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Set tag name
+        id: tag
+        run: |
+          if [[ "${{ github.event_name }}" != "push" ]]; then
+            tag=v$(date +%Y%m%d.%H%M%S)
+          else
+            tag=$(basename "${{ github.ref }}")
+          fi
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+      
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          release_name: ${{ steps.tag.outputs.tag }}
+          draft: true
+          prerelease: false
+
+  build:
+    needs: [release]
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu-22.04 ]
+        name: [ head, debug ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Update Apt
+        run: sudo apt-get update
+
+      - name: Install dependencies
+        run: sudo apt install -y check automake autoconf libtool pkg-config texinfo
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build
+        run: make build
+
+      - name: Create archive
+        run: tar czf algone-ubuntu.tar.gz ./bin/libalgone.a
+
+      - name: Upload Built Algone
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ needs.release.outputs.upload_url }}
+          asset_path: algone-ubuntu.tar.gz
+          asset_name: algone-ubuntu.tar.gz
+          asset_content_type: application/gzip
