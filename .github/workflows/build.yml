@@ -10,7 +10,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
             - name: Install dependencies
-              run: sudo apt-get update && sudo apt install -y check
+              run: sudo apt-get update && sudo apt install -y check automake autoconf libtool pkg-config texinfo tetex-bin
             - name: Test
               run: make tests
             - name: Build
