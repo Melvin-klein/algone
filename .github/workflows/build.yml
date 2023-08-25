@@ -44,7 +44,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-22.04 ]
-        name: [ head, debug ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Update Apt
