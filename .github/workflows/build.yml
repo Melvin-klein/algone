@@ -13,16 +13,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
-      - name: Set tag name
+
+      - name: Create tag
         id: tag
-        run: |
-          if [[ "${{ github.event_name }}" != "push" ]]; then
-            tag=v$(date +%Y%m%d.%H%M%S)
-          else
-            tag=$(basename "${{ github.ref }}")
-          fi
-          echo "tag=$tag" >> $GITHUB_OUTPUT
+        uses: SOLIDSoftworks/semver-tags@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          tag-prefix: 'v'
+          default-version: '0.0.1'
+          prerelease: 'alpha'
       
       - name: Create Release
         id: create_release
@@ -31,8 +30,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          release_name: ${{ steps.tag.outputs.tag }}
+          tag_name: ${{ steps.tag.outputs.semantic-version }}
+          release_name: ${{ steps.tag.outputs.semantic-version }}
           draft: true
           prerelease: false
 
