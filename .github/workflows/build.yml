@@ -11,7 +11,7 @@ jobs:
               uses: actions/checkout@v3
             - name: Install dependencies
               run: sudo apt-get update && sudo apt install -y check automake autoconf libtool pkg-config texinfo
-            #- name: Test
+            #- name: Test 
             #  run: make tests
             - name: Build
               run: make build
