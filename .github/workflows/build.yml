@@ -17,8 +17,10 @@ jobs:
       - name: Create tag
         id: tag
         uses: SOLIDSoftworks/semver-tags@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag-prefix: 'v'
           default-version: '0.0.1'
           prerelease: 'alpha'
