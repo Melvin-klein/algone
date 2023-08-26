@@ -19,7 +19,7 @@ jobs:
       - name: Check semver incremented value
         id: check_incremented_value
         run: |
-          string=${{ github.event.head_commit.message }}
+          string="${{ github.event.head_commit.message }}"
           if [[ $string == *"#minor"* ]]; then
             echo "incremented_value=minor" >> $GITHUB_OUTPUT
           elif [[ $string == *"#major"* ]]; then
