@@ -24,7 +24,7 @@ jobs:
             echo "incremented_value=minor" >> $GITHUB_OUTPUT
           elif [[ $string == *"#major"* ]]; then
             echo "incremented_value=major" >> $GITHUB_OUTPUT
-          else 
+          else
           echo "incremented_value=patch" >> $GITHUB_OUTPUT
           fi
 
