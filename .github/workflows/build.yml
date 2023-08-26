@@ -16,6 +16,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Check semver incremented value
+        id: check_incremented_value
+        run: |
+          string=${{ github.event.head_commit.message }}
+          if [[ $string == *"#minor"* ]]; then
+            echo "incremented_value=minor" >> $GITHUB_OUTPUT
+          elif [[ $string == *"#major"* ]]; then
+            echo "incremented_value=major" >> $GITHUB_OUTPUT
+          else
+          echo "incremented_value=patch" >> $GITHUB_OUTPUT
+          fi
+
       - name: Create tag
         id: tag
         uses: SOLIDSoftworks/semver-tags@v1
@@ -25,7 +37,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag-prefix: 'v'
           default-version: '0.0.1'
-          prerelease: 'alpha'
+          incremented-value: ${{ steps.check_incremented_value.outputs.incremented_value }}
       
       - name: Create Release
         id: create_release
