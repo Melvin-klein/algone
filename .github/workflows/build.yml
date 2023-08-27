@@ -74,7 +74,8 @@ jobs:
       - name: Put header files in include directory
         run: |
           mkdir ./include
-          cp ${find . -type f -name "*.h"} ./include
+          headers="`find ./src -type f -name "*.h"`"
+          cp $headers ./include
 
       - name: Create archive
         run: tar czf algone-ubuntu.tar.gz ./bin/libalgone.a ./include
