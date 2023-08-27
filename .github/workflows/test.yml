@@ -1,0 +1,17 @@
+name: Run tests 
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Apt
+        run: sudo apt-get update
+
+      - name: Install dependencies
+        run: sudo apt-get install -y automake autoconf libtool pkg-config texinfo check 
+
+      - name: Run tests
+        run: make tests
