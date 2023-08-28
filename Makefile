@@ -43,6 +43,12 @@ tests: build build_test
 	./$(BINDIR)/tests_algone
 
 build_test: $(patsubst %, $(BUILDDIR)/tests/%, $(OBJS_T))
+	$(CC) -o $(BINDIR)/tests_algone $^ -L./bin -lalgone -lcheck -lm -lpthread
+
+tests_ubuntu: build build_test_ubuntu
+	./$(BINDIR)/tests_algone
+
+build_test_ubuntu: $(patsubst %, $(BUILDDIR)/tests/%, $(OBJS_T))
 	$(CC) -o $(BINDIR)/tests_algone $^ -L./bin -lalgone -lcheck -lm -lpthread -lsubunit
 
 utests: build
