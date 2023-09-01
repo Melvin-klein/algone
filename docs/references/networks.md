@@ -1,12 +1,12 @@
 ## Structures
 
-### `Network`
+### `ALG_Network`
 
 **Description** : The Network structure represent the entire neural network.
 
-| Variable     | Type          | Description
-| ------------ | ------------- | ------------
-| learningRate | `double` | Control the speed of learning
+| Variable     | Type     | Description                   |
+|--------------|----------|-------------------------------|
+| learningRate | `double` | Control the speed of learning |
 
 ---
 
@@ -20,13 +20,13 @@
 
 **Parameters**
 
-| Parameter    | Type          | Description
-| ------------ | ------------- | ------------
-| inputSize | `int` | The number of artificial neurons (units) in the input layer.
-| learningRate | `double` | Control the speed of learning.
+| Parameter    | Type     | Description                                                  |
+|--------------|----------|--------------------------------------------------------------|
+| inputSize    | `int`    | The number of artificial neurons (units) in the input layer. |
+| learningRate | `double` | Control the speed of learning.                               |
 
 **Return**
 
-| Parameter    | Type          | Description
-| ------------ | ------------- | ------------
-|  | `Network*` | A pointer to the network structure that have been created.
+| Parameter | Type       | Description                                                |
+|-----------|------------|------------------------------------------------------------|
+|           | `Network*` | A pointer to the network structure that have been created. |
