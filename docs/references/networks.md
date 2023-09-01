@@ -6,7 +6,6 @@
 
 | Variable     | Type     | Description                   |
 |--------------|----------|-------------------------------|
-| learningRate | `double` | Control the speed of learning |
 
 ---
 

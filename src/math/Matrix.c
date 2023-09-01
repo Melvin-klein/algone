@@ -5,20 +5,9 @@
 #include "../debug/debug.h"
 #include "../error/error.h"
 
-/**
- * @brief Create a matrix filled with 0
- * 
- * Create a matrix of size (rows, columns) filled with 
- * 
- * @param rows Number of rows
- * @param columns Number of columns
- * @param v Initial value to fill the matrix
- * 
- * @return Matrix* 
- */
-Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v)
+ALG_Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v)
 {
-    Matrix *m = malloc(sizeof(*m));
+    ALG_Matrix *m = malloc(sizeof(*m));
 
     m->_size[0] = rows;
     m->_size[1] = columns;
@@ -37,13 +26,7 @@ Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v)
     return m;
 }
 
-/**
- * @brief Fill a matrix with value v
- * 
- * @param m The matrix to fill
- * @param v The value
- */
-void ALG_MatrixFill(Matrix *m, double v)
+void ALG_MatrixFill(ALG_Matrix *m, double v)
 {
     for (int i = 0; i < m->_size[0]; i++) {
         for (int j = 0; j < m->_size[1]; j++) {
@@ -52,12 +35,7 @@ void ALG_MatrixFill(Matrix *m, double v)
     }
 }
 
-/**
- * @brief Print debug information of matrix m
- * 
- * @param m The matrix to debug
- */
-void ALG_MatrixDebug(Matrix *m)
+void ALG_MatrixDebug(ALG_Matrix *m)
 {
     ALG_DebugHeader("MATRIX");
 
@@ -74,12 +52,7 @@ void ALG_MatrixDebug(Matrix *m)
     ALG_DebugFooter();
 }
 
-/**
- * @brief Free all matrix allocations
- * 
- * @param m The matrix to free
- */
-void ALG_MatrixDestroy(Matrix *m)
+void ALG_MatrixDestroy(ALG_Matrix *m)
 {
     for (int i = 0; i < m->_size[0]; i++) {
         free(m->values[i]);

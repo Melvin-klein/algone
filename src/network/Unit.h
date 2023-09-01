@@ -2,9 +2,13 @@
 #define __ALG_UNIT_H__
 
 /**
- * @brief Unit structure
- * 
- * It represent a single artificial neuron
+ * @struct ALG_Unit
+ * @brief Represent a single artificial neuron.
+ *
+ * @var size The number of weight.
+ * @var output The computed output.
+ * @var _weights READONLY The weights values.
+ * @var _bias READONLY The computed bias.
  */
 typedef struct {
     double *_weights; // Array of weights
@@ -13,7 +17,18 @@ typedef struct {
     double _bias;     // Bias
 } ALG_Unit;
 
+/**
+ * @brief Create a unit.
+ *
+ * @param size The number of weights.
+ * @return The new unit.
+ */
 ALG_Unit *ALG_UnitCreate(size_t size);
+
+/**
+ * @brief Destroy a unit.
+ * @param u The unit to destroy.
+ */
 void ALG_UnitDestroy(ALG_Unit *u);
 
 #endif
