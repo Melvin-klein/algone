@@ -11,9 +11,9 @@ typedef struct {
     size_t size;      // Number of weight
     double output;    // Computed output
     double _bias;     // Bias
-} Unit;
+} ALG_Unit;
 
-Unit *ALG_UnitCreate(size_t size);
-void ALG_UnitDestroy(Unit *u);
+ALG_Unit *ALG_UnitCreate(size_t size);
+void ALG_UnitDestroy(ALG_Unit *u);
 
 #endif

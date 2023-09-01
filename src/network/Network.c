@@ -7,9 +7,9 @@
 #include "../debug/debug.h"
 #include "../math/activation.h"
 
-Network *ALG_NetworkCreate(int inputSize, double learningRate)
+ALG_Network *ALG_NetworkCreate(int inputSize, double learningRate)
 {
-    Network* n = malloc(sizeof(*n));
+    ALG_Network* n = malloc(sizeof(*n));
     n->learningRate = learningRate;
     n->_size = 0;
 
@@ -20,19 +20,19 @@ Network *ALG_NetworkCreate(int inputSize, double learningRate)
     return n;
 }
 
-void ALG_NetworkAddLayer(Network *n, size_t size)
+void ALG_NetworkAddLayer(ALG_Network *n, size_t size)
 {
     n->_size++;
     n->_layers = realloc(n->_layers, sizeof(*(n->_layers)) * n->_size);
 
     ALG_AssertMemoryAlloc(n->_layers, __FILE__, __LINE__);
 
-    Layer* l = ALG_LayerCreate(size, n->_layers[n->_size - 2]);
+    ALG_Layer* l = ALG_LayerCreate(size, n->_layers[n->_size - 2]);
 
     n->_layers[n->_size - 1] = l;
 }
 
-void ALG_NetworkDebug(Network *n)
+void ALG_NetworkDebug(ALG_Network *n)
 {
     ALG_DebugHeader("NETWORK");
 
@@ -41,7 +41,7 @@ void ALG_NetworkDebug(Network *n)
     ALG_DebugFooter();
 }
 
-void ALG_NetworkDestroy(Network *n)
+void ALG_NetworkDestroy(ALG_Network *n)
 {
     for (int j = 0; j < n->_size; j++) {
         ALG_LayerDestroy(n->_layers[j]);
@@ -58,7 +58,7 @@ void ALG_NetworkDestroy(Network *n)
 
 // /!\ Penser à initialiser tout le réseau de manière aléatoire
 
-static void _ALG_NetworkForward(Network *n, double input[])
+static void _ALG_NetworkForward(ALG_Network *n, double input[])
 {
     for (int i = 0; i < n->_layers[0]->size; i++) {
         n->_layers[0]->units[i]->output = input[i];

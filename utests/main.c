@@ -5,7 +5,7 @@
 
 int main()
 {
-    Network* n = ALG_NetworkCreate(10, 0.1);
+    ALG_Network* n = ALG_NetworkCreate(10, 0.1);
 
     ALG_NetworkAddLayer(n, 50);
     ALG_NetworkAddLayer(n, 50);
