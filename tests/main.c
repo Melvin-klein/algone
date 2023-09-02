@@ -17,8 +17,8 @@ int main(void)
     s_layer = layer_suite();
     sr = srunner_create(s_network);
 
-    //srunner_add_suite(sr, s_unit);
-    //srunner_add_suite(sr, s_layer);
+    srunner_add_suite(sr, s_unit);
+    srunner_add_suite(sr, s_layer);
 
     srunner_run_all(sr, CK_NORMAL);
     num_failed = srunner_ntests_failed(sr);

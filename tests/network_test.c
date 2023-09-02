@@ -16,15 +16,14 @@ END_TEST
 
 START_TEST (test_add_layer)
 {
-    /*ALG_Network* n = ALG_NetworkCreate(10);
+    ALG_Network* n = ALG_NetworkCreate(10);
     ck_assert_int_eq(n->_size, 1);
     ALG_NetworkAddLayer(n, 20);
     ck_assert_int_eq(n->_size, 2);
     ck_assert_ptr_nonnull(n->_layers);
     ck_assert_int_eq(n->_layers[0]->_size, 10);
     ck_assert_int_eq(n->_layers[1]->_size, 20);
-    ALG_NetworkDestroy(n);*/
-    ck_assert_int_eq(2, 2);
+    ALG_NetworkDestroy(n);
 }
 END_TEST
 
