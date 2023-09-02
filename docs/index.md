@@ -1,17 +1,13 @@
 # Welcome to Algone Library
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Algone is a library for **machine learning** and **data science**. It is written in C by myself as a student. Because I learned C by myself, **please, don't use Algone in production**, I can't give any guarantee that Algone will work properly despite the unit tests I've set up.
 
-## Commands
+Contributions are open and welcome for every one :D
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Organisation of documentation
 
-## Project layout
+* [Get started](getting_started/installation.md) - Get an overview of how the library works.
+* [Tutorials](tutorials/mnist.md) - Learn step by step how to solve classic machine learning problems.
+* [References](references/networks.md) - Get the description of all elements available in Algone library.
+* [Download](https://github.com/Melvin-klein/algone/releases) - Download the library.
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.

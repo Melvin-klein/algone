@@ -3,7 +3,7 @@
 
 #include "cost.h"
 
-double ALG_MeanSquareError(double predictions[], double targets[], size_t batchSize)
+double ALG_MeanSquaredError(double predictions[], double targets[], size_t batchSize)
 {
     double sum = 0;
 

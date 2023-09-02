@@ -21,4 +21,12 @@ nav:
         - 'MNIST': tutorials/mnist.md
     - References:
         - 'Networks': references/networks.md
+        - 'Math': references/math.md
+        - 'Debug and Errors': references/debug_and_error.md
     - Download: https://github.com/Melvin-klein/algone/releases
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css

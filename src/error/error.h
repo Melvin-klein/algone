@@ -14,7 +14,7 @@
 void ALG_RaiseError(char message[], char file[], int line);
 
 /**
- * @brief Check if manual memory allocation have worked.
+ * @brief Check if manual memory allocation has worked.
  *
  * @param p The pointer to check.
  * @param file The name of the file which check the pointer.
