@@ -39,11 +39,17 @@ $(BUILDDIR)/tests/%.o: $(TESTDIR)/%.c
 	$(MKDIR_P) $(dir $@)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-tests: build build_test
+tests_mac: build build_test_mac
 	./$(BINDIR)/tests_algone
 
-build_test: $(patsubst %, $(BUILDDIR)/tests/%, $(OBJS_T))
+build_test_mac: $(patsubst %, $(BUILDDIR)/tests/%, $(OBJS_T))
 	$(CC) -o $(BINDIR)/tests_algone $^ -L./bin -lalgone -lcheck -lm -lpthread
+
+tests_ubuntu: build build_test_ubuntu
+	./$(BINDIR)/tests_algone
+
+build_test_ubuntu: $(patsubst %, $(BUILDDIR)/tests/%, $(OBJS_T))
+	$(CC) -o $(BINDIR)/tests_algone $^ -L./bin -lalgone -lcheck -lm -lpthread -lsubunit
 
 utests: build
 	$(MKDIR_P) $(BUILDDIR)/utests

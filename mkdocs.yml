@@ -1,14 +1,32 @@
 site_name: Algone
+repo_url: https://github.com/Melvin-klein/algone
+repo_name: Melvin-klein/algone
+edit_uri: edit/master/docs/
 theme:
   name: material
+  icon:
+    repo: fontawesome/brands/git-alt
+    edit: material/pencil 
+    view: material/eye
   features:
     - navigation.tabs
     - navigation.tabs.sticky
+    - content.action.edit
 nav:
     - Welcome: index.md
-    - 'Getting started': 
+    - 'Get started': 
         - 'Installation': getting_started/installation.md
         - 'Simple neural network': getting_started/simple_neural_network.md
     - 'Tutorials':
         - 'MNIST': tutorials/mnist.md
+    - References:
+        - 'Networks': references/networks.md
+        - 'Math': references/math.md
+        - 'Debug and Errors': references/debug_and_error.md
     - Download: https://github.com/Melvin-klein/algone/releases
+extra_javascript:
+  - javascripts/katex.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css

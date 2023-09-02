@@ -7,32 +7,37 @@
 #include "../debug/debug.h"
 #include "../math/activation.h"
 
-Network *ALG_NetworkCreate(int inputSize, double learningRate)
+ALG_Network *ALG_NetworkCreate(int inputSize)
 {
-    Network* n = malloc(sizeof(*n));
-    n->learningRate = learningRate;
-    n->_size = 0;
-
+    ALG_Network* n = malloc(sizeof(*n));
     ALG_AssertMemoryAlloc(n, __FILE__, __LINE__);
 
+    n->_size = 0;
+    n->_layers = NULL;
     ALG_NetworkAddLayer(n, inputSize);
 
     return n;
 }
 
-void ALG_NetworkAddLayer(Network *n, size_t size)
+void ALG_NetworkAddLayer(ALG_Network *n, size_t size)
 {
+    ALG_Layer* l;
     n->_size++;
-    n->_layers = realloc(n->_layers, sizeof(*(n->_layers)) * n->_size);
+    ALG_Layer** tmp = realloc(n->_layers, sizeof(ALG_Layer*) * n->_size);
+    ALG_AssertMemoryAlloc(tmp, __FILE__, __LINE__);
+    n->_layers = tmp;
 
-    ALG_AssertMemoryAlloc(n->_layers, __FILE__, __LINE__);
-
-    Layer* l = ALG_LayerCreate(size, n->_layers[n->_size - 2]);
+    // If the new layer is the input layer, i.e. the first layer
+    if (n->_size == 1) {
+        l = ALG_LayerCreate(size, NULL);
+    } else {
+        l = ALG_LayerCreate(size, n->_layers[n->_size - 2]);
+    }
 
     n->_layers[n->_size - 1] = l;
 }
 
-void ALG_NetworkDebug(Network *n)
+void ALG_NetworkDebug(ALG_Network *n)
 {
     ALG_DebugHeader("NETWORK");
 
@@ -41,7 +46,7 @@ void ALG_NetworkDebug(Network *n)
     ALG_DebugFooter();
 }
 
-void ALG_NetworkDestroy(Network *n)
+void ALG_NetworkDestroy(ALG_Network *n)
 {
     for (int j = 0; j < n->_size; j++) {
         ALG_LayerDestroy(n->_layers[j]);
@@ -58,32 +63,27 @@ void ALG_NetworkDestroy(Network *n)
 
 // /!\ Penser à initialiser tout le réseau de manière aléatoire
 
-static void _ALG_NetworkForward(Network *n, double input[])
+static void _ALG_NetworkForward(ALG_Network *n, double input[])
 {
-    for (int i = 0; i < n->_layers[0]->size; i++) {
-        n->_layers[0]->units[i]->output = input[i];
+    for (int i = 0; i < n->_layers[0]->_size; i++) {
+        n->_layers[0]->_units[i]->output = input[i];
     }
 
     for (int i = 1; i < n->_size; i++) {
-        for (int j = 0; j < n->_layers[i]->size; j++) {
+        for (int j = 0; j < n->_layers[i]->_size; j++) {
             double z = 0;
 
-            for (int k = 0; k < n->_layers[i-1]->size; k++) {
-                z += n->_layers[i]->units[j]->_weights[k] * n->_layers[i-1]->units[k]->output;
+            for (int k = 0; k < n->_layers[i-1]->_size; k++) {
+                z += n->_layers[i]->_units[j]->_weights[k] * n->_layers[i-1]->_units[k]->output;
             }
 
-            z += n->_layers[i]->units[j]->_bias;
+            z += n->_layers[i]->_units[j]->_bias;
 
-            n->_layers[i]->units[j]->output = ALG_Sigmoid(z, 1.);
+            n->_layers[i]->_units[j]->output = ALG_Sigmoid(z, 1.);
         }
     }
 }
 
-/**
- * @brief Compute gradients for all layers
- * 
- * @param n A pointer to the neural network
- */
 /*static void _ALG_BackPropagation(Network *n)
 {
 

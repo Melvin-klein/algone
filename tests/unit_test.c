@@ -1,10 +1,14 @@
 #include "check.h"
 
 #include "unit_test.h"
+#include "../src/algone.h"
 
-START_TEST (test_unit)
+START_TEST (test_create_unit)
 {
-    ck_assert_int_eq(2, 2);
+    ALG_Unit* u = ALG_UnitCreate(10);
+    ck_assert_int_eq(u->_size, 10);
+    ck_assert_ptr_nonnull(u->_weights);
+    ALG_UnitDestroy(u);
 }
 END_TEST
 
@@ -18,7 +22,7 @@ Suite *unit_suite(void)
     /* Core test case */
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_unit);
+    tcase_add_test(tc_core, test_create_unit);
     suite_add_tcase(s, tc_core);
 
     return s;
