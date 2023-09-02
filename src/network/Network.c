@@ -13,6 +13,7 @@ ALG_Network *ALG_NetworkCreate(int inputSize)
     ALG_AssertMemoryAlloc(n, __FILE__, __LINE__);
 
     n->_size = 0;
+    n->_layers = NULL;
     ALG_NetworkAddLayer(n, inputSize);
 
     return n;
@@ -22,9 +23,9 @@ void ALG_NetworkAddLayer(ALG_Network *n, size_t size)
 {
     ALG_Layer* l;
     n->_size++;
-    n->_layers = realloc(&n->_layers, sizeof(*(n->_layers)) * n->_size);
-
-    ALG_AssertMemoryAlloc(n->_layers, __FILE__, __LINE__);
+    ALG_Layer** tmp = realloc(n->_layers, sizeof(ALG_Layer*) * n->_size);
+    ALG_AssertMemoryAlloc(tmp, __FILE__, __LINE__);
+    n->_layers = tmp;
 
     // If the new layer is the input layer, i.e. the first layer
     if (n->_size == 1) {

@@ -1,5 +1,5 @@
-#ifndef __ALG_NETWORKT_TEST_H__
-#define __ALG_NETWORKT_TEST_H__
+#ifndef __ALG_NETWORK_TEST_H__
+#define __ALG_NETWORK_TEST_H__
 
 Suite *network_suite(void);
 

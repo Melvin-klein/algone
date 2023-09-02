@@ -4,8 +4,19 @@
 
 **Description** : The Network structure represent the entire neural network.
 
-| Variable     | Type     | Description                   |
-|--------------|----------|-------------------------------|
+| Variable     | Type     | Accessibility | Description |
+|--------------|----------|---------------|-------------|
+
+### `ALG_Unit`
+
+**Description** : A Unit represent a network simple computational unit.
+
+| Variable | Type      | Accessibility | Description                                  |
+|----------|-----------|---------------|----------------------------------------------|
+| output   | `double`  | Read/Write    | The computed output of the artificial neuron |
+| _weights | `*double` | Read Only     | The weights values                           |
+| _size    | `size_t`  | Read Only     | The number of weights                        |
+| _bias    | `double`  | Read Only     | The computed bias                            |
 
 ---
 
@@ -49,3 +60,41 @@
 | Parameter | Type       | Description                                                                  |
 |-----------|------------|------------------------------------------------------------------------------|
 | n         | `Network*` | The network has received a new layer and its size has been incremented by 1. |
+
+---
+
+### `ALG_UnitCreate`
+
+**Prototype** : `ALG_Unit *ALG_UnitCreate(size_t size)`
+
+**Description** : Create a new Unit.
+
+**Parameters**
+
+| Parameter | Type     | Description            |
+|-----------|----------|------------------------|
+| size      | `size_t` | The number of weights. |
+
+**Modifications and returns**
+
+| Parameter | Type    | Description   |
+|-----------|---------|---------------|
+|           | `Unit*` | The new unit. |
+
+---
+
+### `ALG_UnitDestroy`
+
+**Prototype** : `void ALG_UnitDestroy(ALG_Unit *u)`
+
+**Description** : Free memory of a unit.
+
+**Parameters**
+
+| Parameter | Type        | Description          |
+|-----------|-------------|----------------------|
+| u         | `*ALG_Unit` | The unit to destroy. |
+
+**Modifications and returns**
+
+No modifications or return.

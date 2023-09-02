@@ -12,7 +12,7 @@
  */
 typedef struct {
     double *_weights; // Array of weights
-    size_t size;      // Number of weight
+    size_t _size;      // Number of weight
     double output;    // Computed output
     double _bias;     // Bias
 } ALG_Unit;

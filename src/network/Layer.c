@@ -10,7 +10,7 @@ ALG_Layer *ALG_LayerCreate(size_t size, ALG_Layer *previousLayer)
     ALG_AssertMemoryAlloc(l, __FILE__, __LINE__);
 
     l->_size = size;
-    l->_units = calloc(l->_size, sizeof(*(l->_units)));
+    l->_units = malloc(sizeof(**l->_units) * l->_size);
 
     ALG_AssertMemoryAlloc(l->_units, __FILE__, __LINE__);
 
@@ -35,7 +35,7 @@ void ALG_LayerDestroy(ALG_Layer *l)
 
 static void _ALG_LayerAddUnit(ALG_Layer *l, size_t size)
 {
-    /*for (int i = 0; i < l->_size; i++) {
+    for (int i = 0; i < l->_size; i++) {
         l->_units[i] = ALG_UnitCreate(size);
-    }*/
+    }
 }
