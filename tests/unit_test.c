@@ -6,7 +6,7 @@
 START_TEST (test_create_unit)
 {
     ALG_Unit* u = ALG_CreateUnit(10);
-    ck_assert_int_eq(u->_size, 10);
+    ck_assert_int_eq(u->_nbWeights, 10);
     ck_assert_ptr_nonnull(u->_weights);
     ALG_DestroyUnit(u);
 }

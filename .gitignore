@@ -5,3 +5,4 @@ build/
 # OS and Software folders
 .vscode
 .DS_Store
+.idea

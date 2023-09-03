@@ -36,6 +36,6 @@ void ALG_DestroyLayer(ALG_Layer* l);
  * @param l The layer.
  * @param size The number of units to create.
  */
-static void ALG_AddUnitToLayer(ALG_Layer *l, size_t size);
+void ALG_AddUnitToLayer(ALG_Layer *l, size_t size);
 
 #endif
