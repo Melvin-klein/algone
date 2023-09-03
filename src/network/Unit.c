@@ -10,12 +10,12 @@ ALG_Unit *ALG_CreateUnit(size_t size)
 
     ALG_AssertMemoryAlloc(u, __FILE__, __LINE__);
 
-    u->_size = size;
+    u->_nbWeights = size;
     u->_weights = NULL;
 
     // Input units does not have weights
-    if (u->_size > 0) {
-        u->_weights = calloc(u->_size, sizeof(*(u->_weights)));
+    if (u->_nbWeights > 0) {
+        u->_weights = calloc(u->_nbWeights, sizeof(*(u->_weights)));
 
         ALG_AssertMemoryAlloc(u->_weights, __FILE__, __LINE__);
     }

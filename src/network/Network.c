@@ -12,7 +12,7 @@ ALG_Network *ALG_CreateNetwork(int inputSize)
     ALG_Network* n = malloc(sizeof(*n));
     ALG_AssertMemoryAlloc(n, __FILE__, __LINE__);
 
-    n->_size = 0;
+    n->_nbLayers = 0;
     n->_layers = NULL;
     ALG_AddLayerToNetwork(n, inputSize);
 
@@ -22,33 +22,33 @@ ALG_Network *ALG_CreateNetwork(int inputSize)
 void ALG_AddLayerToNetwork(ALG_Network *n, size_t size)
 {
     ALG_Layer* l;
-    n->_size++;
-    ALG_Layer** tmp = realloc(n->_layers, sizeof(ALG_Layer*) * n->_size);
+    n->_nbLayers++;
+    ALG_Layer** tmp = realloc(n->_layers, sizeof(ALG_Layer*) * n->_nbLayers);
     ALG_AssertMemoryAlloc(tmp, __FILE__, __LINE__);
     n->_layers = tmp;
 
     // If the new layer is the input layer, i.e. the first layer
-    if (n->_size == 1) {
+    if (n->_nbLayers == 1) {
         l = ALG_CreateLayer(size, NULL);
     } else {
-        l = ALG_CreateLayer(size, n->_layers[n->_size - 2]);
+        l = ALG_CreateLayer(size, n->_layers[n->_nbLayers - 2]);
     }
 
-    n->_layers[n->_size - 1] = l;
+    n->_layers[n->_nbLayers - 1] = l;
 }
 
 void ALG_DebugNetwork(ALG_Network *n)
 {
     ALG_DebugHeader("NETWORK");
 
-    printf("Layers : %d\n", (int) n->_size);
+    printf("Layers : %d\n", (int) n->_nbLayers);
 
     ALG_DebugFooter();
 }
 
 void ALG_DestroyNetwork(ALG_Network *n)
 {
-    for (int j = 0; j < n->_size; j++) {
+    for (int j = 0; j < n->_nbLayers; j++) {
         ALG_DestroyLayer(n->_layers[j]);
     }
 
@@ -65,15 +65,15 @@ void ALG_DestroyNetwork(ALG_Network *n)
 
 static void ALG_NetworkForward(ALG_Network *n, double input[])
 {
-    for (int i = 0; i < n->_layers[0]->_size; i++) {
+    for (int i = 0; i < n->_layers[0]->_nbUnits; i++) {
         n->_layers[0]->_units[i]->output = input[i];
     }
 
-    for (int i = 1; i < n->_size; i++) {
-        for (int j = 0; j < n->_layers[i]->_size; j++) {
+    for (int i = 1; i < n->_nbLayers; i++) {
+        for (int j = 0; j < n->_layers[i]->_nbUnits; j++) {
             double z = 0;
 
-            for (int k = 0; k < n->_layers[i-1]->_size; k++) {
+            for (int k = 0; k < n->_layers[i-1]->_nbUnits; k++) {
                 z += n->_layers[i]->_units[j]->_weights[k] * n->_layers[i-1]->_units[k]->output;
             }
 

@@ -14,7 +14,7 @@
 typedef struct
 {
     ALG_Layer **_layers;
-    size_t _size;
+    size_t _nbLayers;
 } ALG_Network;
 
 /**
@@ -45,6 +45,6 @@ void ALG_DebugNetwork(ALG_Network *n);
  *
  * @param n The network to destroy.
  */
-void ALG_Destroy(ALG_Network *n);
+void ALG_DestroyNetwork(ALG_Network *n);
 
 #endif

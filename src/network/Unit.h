@@ -11,10 +11,10 @@
  * @var _bias READONLY The computed bias.
  */
 typedef struct {
-    double *_weights; // Array of weights
-    size_t _size;      // Number of weight
-    double output;    // Computed output
-    double _bias;     // Bias
+    double *_weights;  // Array of weights
+    size_t _nbWeights; // Number of weight
+    double output;     // Computed output
+    double _bias;      // Bias
 } ALG_Unit;
 
 /**

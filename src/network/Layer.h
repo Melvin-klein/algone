@@ -12,7 +12,7 @@
  */
 typedef struct {
     ALG_Unit **_units; // Array of units
-    size_t _size;
+    size_t _nbUnits;
 } ALG_Layer;
 
 /**
