@@ -5,7 +5,7 @@
 #include "../debug/debug.h"
 #include "../error/error.h"
 
-ALG_Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v)
+ALG_Matrix *ALG_CreateMatrix(size_t rows, size_t columns, double v)
 {
     ALG_Matrix *m = malloc(sizeof(*m));
 
@@ -21,12 +21,12 @@ ALG_Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v)
         ALG_AssertMemoryAlloc(m->values[i], __FILE__, __LINE__);
     }
 
-    ALG_MatrixFill(m, v);
+    ALG_FillMatrix(m, v);
 
     return m;
 }
 
-void ALG_MatrixFill(ALG_Matrix *m, double v)
+void ALG_FillMatrix(ALG_Matrix *m, double v)
 {
     for (int i = 0; i < m->_size[0]; i++) {
         for (int j = 0; j < m->_size[1]; j++) {
@@ -35,7 +35,7 @@ void ALG_MatrixFill(ALG_Matrix *m, double v)
     }
 }
 
-void ALG_MatrixDebug(ALG_Matrix *m)
+void ALG_DebugMatrix(ALG_Matrix *m)
 {
     ALG_DebugHeader("MATRIX");
 
@@ -52,7 +52,7 @@ void ALG_MatrixDebug(ALG_Matrix *m)
     ALG_DebugFooter();
 }
 
-void ALG_MatrixDestroy(ALG_Matrix *m)
+void ALG_DestroyMatrix(ALG_Matrix *m)
 {
     for (int i = 0; i < m->_size[0]; i++) {
         free(m->values[i]);

@@ -4,7 +4,7 @@
 #include "./Unit.h"
 #include "../error/error.h"
 
-ALG_Unit *ALG_UnitCreate(size_t size)
+ALG_Unit *ALG_CreateUnit(size_t size)
 {
     ALG_Unit *u = malloc(sizeof(*u));
 
@@ -23,7 +23,7 @@ ALG_Unit *ALG_UnitCreate(size_t size)
     return u;
 }
 
-void ALG_UnitDestroy(ALG_Unit *u)
+void ALG_DestroyUnit(ALG_Unit *u)
 {
     free(u->_weights);
     

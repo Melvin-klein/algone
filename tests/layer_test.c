@@ -5,10 +5,10 @@
 
 START_TEST (test_create_layer)
 {
-    ALG_Layer* l = ALG_LayerCreate(10, NULL);
+    ALG_Layer* l = ALG_CreateLayer(10, NULL);
     ck_assert_int_eq(l->_size, 10);
     ck_assert_ptr_nonnull(l->_units);
-    ALG_LayerDestroy(l);
+    ALG_DestroyLayer(l);
 }
 END_TEST
 

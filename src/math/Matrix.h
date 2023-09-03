@@ -21,7 +21,7 @@ typedef struct {
  * @param init The value to initialize all the matrix values.
  * @return A pointer to the created matrix.
  */
-ALG_Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v);
+ALG_Matrix *ALG_CreateMatrix(size_t rows, size_t columns, double v);
 
 /**
  * @brief Fill a matrix with a value.
@@ -29,20 +29,20 @@ ALG_Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v);
  * @param m The matrix to fill.
  * @param v The value to use.
  */
-void ALG_MatrixFill(ALG_Matrix *m, double v);
+void ALG_FillMatrix(ALG_Matrix *m, double v);
 
 /**
  * @brief Print a matrix in the console.
  *
  * @param m The matrix to debug.
  */
-void ALG_MatrixDebug(ALG_Matrix *m);
+void ALG_DebugMatrix(ALG_Matrix *m);
 
 /**
  * @brief Destroy a Matrix.
  *
  * @param m The matrix to destroy.
  */
-void ALG_MatrixDestroy(ALG_Matrix *m);
+void ALG_DestroyMatrix(ALG_Matrix *m);
 
 #endif

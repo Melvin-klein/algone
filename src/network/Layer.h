@@ -1,5 +1,5 @@
-#ifndef __ALG_LAYER_H__
-#define __ALG_LAYER_H__
+#ifndef ALG_LAYER_H
+#define ALG_LAYER_H
 
 #include "./Unit.h"
 
@@ -22,20 +22,20 @@ typedef struct {
  * @param previousLayer The layer that is before this one.
  * @return A pointer to the new layer.
  */
-ALG_Layer *ALG_LayerCreate(size_t size, ALG_Layer *previousLayer);
+ALG_Layer *ALG_CreateLayer(size_t size, ALG_Layer *previousLayer);
 
 /**
  * @brief Destroy a layer.
  *
  * @param l The layer to destroy.
  */
-void ALG_LayerDestroy(ALG_Layer* l);
+void ALG_DestroyLayer(ALG_Layer* l);
 
 /**
  * @brief Add a unit to a layer.
  * @param l The layer.
  * @param size The number of units to create.
  */
-static void _ALG_LayerAddUnit(ALG_Layer *l, size_t size);
+static void ALG_AddUnitToLayer(ALG_Layer *l, size_t size);
 
 #endif

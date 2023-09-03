@@ -23,12 +23,12 @@ typedef struct {
  * @param size The number of weights.
  * @return The new unit.
  */
-ALG_Unit *ALG_UnitCreate(size_t size);
+ALG_Unit *ALG_CreateUnit(size_t size);
 
 /**
  * @brief Destroy a unit.
  * @param u The unit to destroy.
  */
-void ALG_UnitDestroy(ALG_Unit *u);
+void ALG_DestroyUnit(ALG_Unit *u);
 
 #endif

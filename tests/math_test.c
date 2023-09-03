@@ -5,7 +5,7 @@
 
 START_TEST (test_create_matrix)
 {
-    ALG_Matrix* m = ALG_MatrixCreate(4, 4, 8);
+    ALG_Matrix* m = ALG_CreateMatrix(4, 4, 8);
     ck_assert_ptr_nonnull(m);
 
     for (int i = 0; i < m->_size[0]; i++) {
@@ -14,7 +14,7 @@ START_TEST (test_create_matrix)
         }
     }
 
-    ALG_MatrixDestroy(m);
+    ALG_DestroyMatrix(m);
 }
 END_TEST
 

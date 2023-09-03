@@ -5,10 +5,10 @@
 
 START_TEST (test_create_unit)
 {
-    ALG_Unit* u = ALG_UnitCreate(10);
+    ALG_Unit* u = ALG_CreateUnit(10);
     ck_assert_int_eq(u->_size, 10);
     ck_assert_ptr_nonnull(u->_weights);
-    ALG_UnitDestroy(u);
+    ALG_DestroyUnit(u);
 }
 END_TEST
 

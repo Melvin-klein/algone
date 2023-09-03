@@ -1,8 +1,8 @@
-#ifndef ALGONE_MATH_TEST_H
-#define ALGONE_MATH_TEST_H
+#ifndef ALG_MATH_TEST_H
+#define ALG_MATH_TEST_H
 
 #include "check.h"
 
 Suite *math_suite(void);
 
-#endif //ALGONE_MATH_TEST_H
+#endif //ALG_MATH_TEST_H
