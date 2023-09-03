@@ -1,5 +1,5 @@
-#ifndef __ALG_DEBUG_H__
-#define __ALG_DEBUG_H__
+#ifndef ALGONE_DEBUG_H
+#define ALGONE_DEBUG_H
 
 /**
  * @brief Print the header of debugger.

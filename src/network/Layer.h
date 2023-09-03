@@ -1,5 +1,5 @@
-#ifndef ALG_LAYER_H
-#define ALG_LAYER_H
+#ifndef ALGONE_LAYER_H
+#define ALGONE_LAYER_H
 
 #include "./Unit.h"
 

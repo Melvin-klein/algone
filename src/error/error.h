@@ -1,5 +1,5 @@
-#ifndef __ALG_ERROR_H__
-#define __ALG_ERROR_H__
+#ifndef ALGONE_ERROR_H
+#define ALGONE_ERROR_H
 
 #define ALG_MEMORY_ALLOC_ERROR "Could not allocate memory."
 #define ALG_ARRAY_OVERFLOW_ERROR "Index of array does not exists."

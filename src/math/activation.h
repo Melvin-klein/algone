@@ -1,5 +1,5 @@
-#ifndef __ALG_MATH_H__
-#define __ALG_MATH_H__
+#ifndef ALGONE_ACTIVATION_H
+#define ALGONE_ACTIVATION_H
 
 /**
  * @brief The math sigmoid function.

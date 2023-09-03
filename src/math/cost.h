@@ -1,5 +1,5 @@
-#ifndef __ALG_COST_H__
-#define __ALG_COST_H__
+#ifndef ALGONE_COST_H
+#define ALGONE_COST_H
 
 /**
  * @brief The mean square error.

@@ -1,5 +1,5 @@
-#ifndef __ALG_MATRIX_H__
-#define __ALG_MATRIX_H__
+#ifndef ALGONE_MATRIX_H
+#define ALGONE_MATRIX_H
 
 /**
  * @struct ALG_Matrix

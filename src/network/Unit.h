@@ -1,5 +1,5 @@
-#ifndef __ALG_UNIT_H__
-#define __ALG_UNIT_H__
+#ifndef ALGONE_UNIT_H
+#define ALGONE_UNIT_H
 
 /**
  * @struct ALG_Unit

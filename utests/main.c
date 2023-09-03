@@ -5,12 +5,10 @@
 
 int main()
 {
-    ALG_Network* n = ALG_NetworkCreate(10);
-    ALG_NetworkDebug(n);
-    ALG_NetworkAddLayer(n, 10);
-    ALG_NetworkDebug(n);
-    ALG_NetworkAddLayer(n, 50);
-    ALG_NetworkDebug(n);
+    ALG_Network* n = ALG_CreateNetwork(10);
+    ALG_DebugNetwork(n);
+    ALG_AddLayerToNetwork(n, 10);
+    ALG_DebugNetwork(n);
 
     double yTrue[5] = {3.43, 2.67, 0.47, -1.34, -0.21};
     double yPred[5] = {2, 5, -2, 3, 0};

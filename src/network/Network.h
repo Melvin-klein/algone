@@ -1,5 +1,5 @@
-#ifndef __ALG_NETWORK_H__
-#define __ALG_NETWORK_H__
+#ifndef ALGONE_NETWORK_H
+#define ALGONE_NETWORK_H
 
 #include "stdlib.h"
 
@@ -45,6 +45,6 @@ void ALG_DebugNetwork(ALG_Network *n);
  *
  * @param n The network to destroy.
  */
-void ALG_DestroyNetwork(ALG_Network *n);
+void ALG_Destroy(ALG_Network *n);
 
 #endif

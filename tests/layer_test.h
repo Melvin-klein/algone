@@ -1,5 +1,5 @@
-#ifndef __ALG_LAYER_TEST_H__
-#define __ALG_LAYER_TEST_H__
+#ifndef ALGONE_LAYER_TEST_H
+#define ALGONE_LAYER_TEST_H
 
 #include "check.h"
 

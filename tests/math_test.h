@@ -1,5 +1,5 @@
-#ifndef ALG_MATH_TEST_H
-#define ALG_MATH_TEST_H
+#ifndef ALGONE_MATH_TEST_H
+#define ALGONE_MATH_TEST_H
 
 #include "check.h"
 

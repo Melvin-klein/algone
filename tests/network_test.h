@@ -1,5 +1,5 @@
-#ifndef __ALG_NETWORK_TEST_H__
-#define __ALG_NETWORK_TEST_H__
+#ifndef ALGONE_NETWORK_TEST_H
+#define ALGONE_NETWORK_TEST_H
 
 #include "check.h"
 
