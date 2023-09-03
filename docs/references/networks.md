@@ -6,16 +6,18 @@
 
 **Description** : The Network structure represent the entire neural network.
 
-| Variable     | Type     | Accessibility | Description |
-|--------------|----------|---------------|-------------|
+| Variable  | Type          | Accessibility | Description                         |
+|-----------|---------------|---------------|-------------------------------------|
+| _layers   | `ALG_Layer**` | Read Only     | An array the network layers         |
+| _nbLayers | `int`         | Read Only     | The number of layers in the network |
 
 ---
 
-### `ALG_NetworkCreate()`
+### `ALG_CreateNetwork()`
 
 **Type** : Function
 
-**Prototype** : `Network *ALG_NetworkCreate(int inputSize)`
+**Prototype** : `Network *ALG_CreateNetwork(int inputSize)`
 
 **Description** : Create an artificial neural network with the first input layer.
 
@@ -33,11 +35,11 @@
 
 ---
 
-### `ALG_NetworkAddLayer()`
+### `ALG_AddLayerToNetwork()`
 
 **Type** : Function
 
-**Prototype** : `void ALG_NetworkAddLayer(ALG_Network *n, size_t size)`
+**Prototype** : `void ALG_AddLayerToNetwork(ALG_Network *n, size_t size)`
 
 **Description** : Create and append a new layer to a network.
 
@@ -56,7 +58,7 @@
 
 ---
 
-### `ALG_NetworkDestroy()`
+### `ALG_DestroyNetwork()`
 
 **Type** : Function
 
@@ -91,15 +93,15 @@
 | Variable | Type         | Accessibility | Description                       |
 |----------|--------------|---------------|-----------------------------------|
 | _units   | `ALG_Unit**` | Read Only     | The units contained in the layer. |
-| _size    | `size_t`     | Read Only     | The number of units               |
+| _nbUnits | `size_t`     | Read Only     | The number of units.              |
 
 ---
 
-### `ALG_LayerCreate()`
+### `ALG_CreateLayer()`
 
 **Type** : Function
 
-**Prototype** : `ALG_Layer *ALG_LayerCreate(size_t size, ALG_Layer *previousLayer)`
+**Prototype** : `ALG_Layer *ALG_CreateLayer(size_t size, ALG_Layer *previousLayer)`
 
 **Description** : Create a new Layer.
 
@@ -118,11 +120,11 @@
 
 ---
 
-### `ALG_LayerDestroy()`
+### `ALG_DestroyLayer()`
 
 **Type** : Function
 
-**Prototype** : `void ALG_LayerDestroy(ALG_Layer* l)`
+**Prototype** : `void ALG_DestroyLayer(ALG_Layer* l)`
 
 **Description** : Free memory of a layer.
 
@@ -150,20 +152,20 @@
 
 **Description** : A Unit represent a network simple computational unit.
 
-| Variable | Type      | Accessibility | Description                                  |
-|----------|-----------|---------------|----------------------------------------------|
-| output   | `double`  | Read/Write    | The computed output of the artificial neuron |
-| _weights | `*double` | Read Only     | The weights values                           |
-| _size    | `size_t`  | Read Only     | The number of weights                        |
-| _bias    | `double`  | Read Only     | The computed bias                            |
+| Variable   | Type      | Accessibility | Description                                  |
+|------------|-----------|---------------|----------------------------------------------|
+| output     | `double`  | Read/Write    | The computed output of the artificial neuron |
+| _weights   | `*double` | Read Only     | The weights values                           |
+| _nbWeights | `size_t`  | Read Only     | The number of weights                        |
+| _bias      | `double`  | Read Only     | The computed bias                            |
 
 ---
 
-### `ALG_UnitCreate()`
+### `ALG_CreateUnit()`
 
 **Type** : Function
 
-**Prototype** : `ALG_Unit *ALG_UnitCreate(size_t size)`
+**Prototype** : `ALG_Unit *ALG_CreateUnit(size_t size)`
 
 **Description** : Create a new Unit.
 
@@ -181,11 +183,11 @@
 
 ---
 
-### `ALG_UnitDestroy()`
+### `ALG_DestroyUnit()`
 
 **Type** : Function
 
-**Prototype** : `void ALG_UnitDestroy(ALG_Unit *u)`
+**Prototype** : `void ALG_DestroyUnit(ALG_Unit *u)`
 
 **Description** : Free memory of a unit.
 
