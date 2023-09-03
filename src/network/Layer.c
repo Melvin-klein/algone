@@ -33,7 +33,7 @@ void ALG_DestroyLayer(ALG_Layer *l)
     free(l);
 }
 
-static void ALG_AddUnitToLayer(ALG_Layer *l, size_t size)
+void ALG_AddUnitToLayer(ALG_Layer *l, size_t size)
 {
     for (int i = 0; i < l->_nbUnits; i++) {
         l->_units[i] = ALG_CreateUnit(size);
