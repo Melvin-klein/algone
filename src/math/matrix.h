@@ -1,17 +1,7 @@
 #ifndef ALGONE_MATRIX_H
 #define ALGONE_MATRIX_H
 
-/**
- * @struct ALG_Matrix
- * @brief Define a Matrix.
- *
- * @var values The values of the Matrix.
- * @var _size READONLY The number of rows ans columns.
- */
-typedef struct {
-    size_t _size[2];
-    double **values;
-} ALG_Matrix;
+#include "math_types.h"
 
 /**
  * @brief Create a Matrix.

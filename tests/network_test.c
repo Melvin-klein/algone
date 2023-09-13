@@ -3,9 +3,9 @@
 #include "network_test.h"
 #include "../src/algone.h"
 
-START_TEST (test_create_network)
+START_TEST (test_create_bare_network)
 {
-    ALG_Network* n = ALG_CreateNetwork(10);
+    ALG_Network* n = ALG_CreateBareNetwork(10);
     ck_assert_int_eq(n->_nbLayers, 1);
     ck_assert_ptr_nonnull(n->_layers);
     ck_assert_int_eq(n->_layers[0]->_nbUnits, 10);
@@ -14,18 +14,13 @@ START_TEST (test_create_network)
 }
 END_TEST
 
-START_TEST (test_add_layer)
+/*START_TEST (test_forward)
 {
-    ALG_Network* n = ALG_CreateNetwork(10);
-    ck_assert_int_eq(n->_nbLayers, 1);
-    ALG_AddLayerToNetwork(n, 20);
-    ck_assert_int_eq(n->_nbLayers, 2);
-    ck_assert_ptr_nonnull(n->_layers);
-    ck_assert_int_eq(n->_layers[0]->_nbUnits, 10);
-    ck_assert_int_eq(n->_layers[1]->_nbUnits, 20);
+    ALG_Network* n = ALG_CreateNetwork();
+
     ALG_DestroyNetwork(n);
 }
-END_TEST
+END_TEST*/
 
 Suite *network_suite(void)
 {
@@ -37,8 +32,7 @@ Suite *network_suite(void)
     /* Core test case */
     tc_core = tcase_create("Core");
 
-    tcase_add_test(tc_core, test_create_network);
-    tcase_add_test(tc_core, test_add_layer);
+    tcase_add_test(tc_core, test_create_bare_network);
     suite_add_tcase(s, tc_core);
 
     return s;

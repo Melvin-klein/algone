@@ -1,7 +1,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 
-#include "Matrix.h"
+#include "matrix.h"
 #include "../debug/debug.h"
 #include "../error/error.h"
 
@@ -13,12 +13,20 @@ ALG_Matrix *ALG_CreateMatrix(size_t rows, size_t columns, double v)
     m->_size[1] = columns;
     m->values = calloc(m->_size[0], sizeof(*(m->values)));
 
-    ALG_AssertMemoryAlloc(m, __FILE__, __LINE__);
+    if (m->values == NULL) {
+        ALG_SetError(ALG_MEMORY_ALLOCATION_ERROR, "Could not allocate memory", __FILE__, __LINE__);
+
+        return NULL;
+    }
 
     for (int i = 0; i < m->_size[0]; i++) {
         m->values[i] = calloc(m->_size[1], sizeof(m->values[i]));
 
-        ALG_AssertMemoryAlloc(m->values[i], __FILE__, __LINE__);
+        if (m->values[i] == NULL) {
+            ALG_SetError(ALG_MEMORY_ALLOCATION_ERROR, "Could not allocate memory", __FILE__, __LINE__);
+
+            return NULL;
+        }
     }
 
     ALG_FillMatrix(m, v);
