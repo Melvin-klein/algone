@@ -40,6 +40,7 @@ typedef struct {
 typedef struct
 {
     ALG_Layer **_layers;
+    ALG_Layer *_lastLayer;
     size_t _nbLayers;
     size_t _nbMaxLayer;
 } ALG_Network;

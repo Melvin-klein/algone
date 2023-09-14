@@ -32,13 +32,11 @@ START_TEST (test_create_vector_from_file)
     if (file != NULL) {
         ALG_ReadMetadataFromFile(file);
         ALG_Vector *v = ALG_CreateVectorFromFile(file);
-        ck_assert_int_eq(v->size, 6);
+        ck_assert_int_eq(v->size, 4);
         ck_assert_double_eq(ALG_GetVectorValueAt(v, 0), 1.);
-        ck_assert_double_eq(ALG_GetVectorValueAt(v, 1), 2.4);
-        ck_assert_double_eq(ALG_GetVectorValueAt(v, 2), 0.3);
-        ck_assert_double_eq(ALG_GetVectorValueAt(v, 3), 2.1);
-        ck_assert_double_eq(ALG_GetVectorValueAt(v, 4), -0.2);
-        ck_assert_double_eq(ALG_GetVectorValueAt(v, 5), 2.1);
+        ck_assert_double_eq(ALG_GetVectorValueAt(v, 1), 2.);
+        ck_assert_double_eq(ALG_GetVectorValueAt(v, 2), 1.);
+        ck_assert_double_eq(ALG_GetVectorValueAt(v, 3), 2.);
         ALG_DestroyVector(v);
         fclose(file);
     } else {

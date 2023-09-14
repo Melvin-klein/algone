@@ -39,7 +39,7 @@ $(BUILDDIR)/tests/%.o: $(TESTDIR)/%.c
 	$(MKDIR_P) $(dir $@)
 	$(CC) $(CCFLAGS) -c $< -o $@
 
-tests_mac: build build_test_mac
+tests_mac: clean build build_test_mac
 	./$(BINDIR)/tests_algone
 
 build_test_mac: $(patsubst %, $(BUILDDIR)/tests/%, $(OBJS_T))

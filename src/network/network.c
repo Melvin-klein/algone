@@ -13,8 +13,20 @@ ALG_Network* ALG_CreateNetwork(int inputSize, int nbLayers)
 {
     ALG_Network *n = ALG_CreateBareNetwork(inputSize);
 
-    n->_layers = malloc(sizeof(ALG_Layer) * nbLayers);
+    // +1 is for the input layer
+    nbLayers += 1;
+
+    ALG_Layer **ptr = realloc(n->_layers, sizeof(ALG_Layer) * nbLayers);
+
+    if (ptr == NULL) {
+        ALG_SetError(ALG_MEMORY_ALLOCATION_ERROR, "Could not allocate memory", __FILE__, __LINE__);
+
+        return NULL;
+    }
+
+    n->_layers = ptr;
     n->_nbMaxLayer = nbLayers;
+    n->_lastLayer = n->_layers[1];
 
     return n;
 }
@@ -32,24 +44,14 @@ ALG_Network* ALG_CreateBareNetwork(int inputSize)
     n->_nbLayers = 0;
     n->_nbMaxLayer = 0;
     n->_layers = NULL;
+    n->_lastLayer = NULL;
     ALG_CreateLayerInNetwork(n, inputSize);
 
     return n;
 }
 
-ALG_Network* ALG_CreateNetworkFromFile(const char filename[])
+ALG_Network* ALG_CreateNetworkFromFile(FILE *file)
 {
-    FILE* file = fopen(filename, "r");
-
-    if (file == NULL) {
-        char message[300] = "Can't load file : ";
-        strcat(message, filename);
-
-        ALG_SetError(ALG_FILE_ERROR, message, __FILE__, __LINE__);
-
-        return NULL;
-    }
-
     ALG_FileMetadata *meta = ALG_ReadMetadataFromFile(file);
 
     ALG_Network *n = ALG_CreateNetwork(meta->inputSize, meta->nbLayers);
@@ -59,8 +61,6 @@ ALG_Network* ALG_CreateNetworkFromFile(const char filename[])
     while ((v = ALG_CreateVectorFromFile(file)) != NULL) {
         ALG_CreateLayerFromVectorInNetwork(n, v);
     }
-
-    fclose(file);
 
     return n;
 }
@@ -84,11 +84,28 @@ void ALG_DestroyNetwork(ALG_Network *n)
     free(n);
 }
 
-void ALG_Forward(ALG_Network *n, const double inputs[])
+void ALG_FillNetworkInputs(ALG_Network *n, const ALG_Vector *inputs)
 {
-    for (int i = 0; i < n->_layers[0]->_nbUnits; i++) {
-        n->_layers[0]->_units[i]->output = inputs[i];
+    if (inputs->size != n->_layers[0]->_nbUnits) {
+        ALG_SetError(ALG_INCOMPATIBLE_ERROR, "The number of inputs must be equals to the number of input units of the network", __FILE__, __LINE__);
+
+        return;
     }
+
+    for (int i = 0; i < n->_layers[0]->_nbUnits; i++) {
+        n->_layers[0]->_units[i]->output = ALG_GetVectorValueAt(inputs, i);
+    }
+}
+
+void ALG_Forward(ALG_Network *n, const ALG_Vector *inputs)
+{
+    if (inputs->size != n->_layers[0]->_nbUnits) {
+        ALG_SetError(ALG_INCOMPATIBLE_ERROR, "Input size must be equal to network input layer size", __FILE__, __LINE__);
+
+        return;
+    }
+
+    ALG_FillNetworkInputs(n, inputs);
 
     for (int i = 1; i < n->_nbLayers; i++) {
         for (int j = 0; j < n->_layers[i]->_nbUnits; j++) {

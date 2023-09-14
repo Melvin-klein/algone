@@ -19,8 +19,7 @@ ALG_FileMetadata* ALG_ReadMetadataFromFile(FILE *file)
     ALG_Vector *values = ALG_CreateVectorFromFile(file);
 
     meta->inputSize = (int) ALG_GetVectorValueAt(values, 0);
-    meta->maxLayerSize = (int) ALG_GetVectorValueAt(values, 1);
-    meta->nbLayers = (int) ALG_GetVectorValueAt(values, 2);
+    meta->nbLayers = (int) ALG_GetVectorValueAt(values, 1);
 
     return meta;
 }

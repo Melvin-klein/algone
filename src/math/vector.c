@@ -85,7 +85,7 @@ void ALG_SetVectorValueAt(ALG_Vector *v, int pos, double value)
     v->values[pos] = value;
 }
 
-double ALG_GetVectorValueAt(ALG_Vector *v, int pos)
+double ALG_GetVectorValueAt(const ALG_Vector *v, int pos)
 {
     return v->values[pos];
 }

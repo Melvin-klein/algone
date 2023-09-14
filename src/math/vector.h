@@ -52,7 +52,7 @@ void ALG_SetVectorValueAt(ALG_Vector *v, int pos, double value);
  * @param pos The position to read.
  * @return Return the value.
  */
-double ALG_GetVectorValueAt(ALG_Vector *v, int pos);
+double ALG_GetVectorValueAt(const ALG_Vector *v, int pos);
 
 /**
  * @brief Free a vector pointer.

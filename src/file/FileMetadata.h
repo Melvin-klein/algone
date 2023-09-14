@@ -3,7 +3,6 @@
 
 typedef struct {
     int inputSize;
-    int maxLayerSize;
     int nbLayers;
 } ALG_FileMetadata;
 

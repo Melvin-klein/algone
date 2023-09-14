@@ -54,6 +54,7 @@ void ALG_CreateLayerInNetwork(ALG_Network *n, size_t size)
     }
 
     n->_layers[n->_nbLayers - 1] = l;
+    n->_lastLayer = l;
 }
 
 ALG_Layer* ALG_CreateLayerFromVector(ALG_Vector *v, int nbUnits)
@@ -101,6 +102,7 @@ void ALG_AppendLayerToNetwork(ALG_Layer *l, ALG_Network *n)
 
     n->_nbLayers++;
     n->_layers[n->_nbLayers - 1] = l;
+    n->_lastLayer = l;
 }
 
 void ALG_CreateLayerFromVectorInNetwork(ALG_Network *n, ALG_Vector *v)

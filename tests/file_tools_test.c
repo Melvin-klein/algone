@@ -11,9 +11,8 @@ START_TEST (test_read_metadata)
 
     if (file != NULL) {
         ALG_FileMetadata *meta = ALG_ReadMetadataFromFile(file);
-        ck_assert_int_eq(meta->inputSize, 120);
-        ck_assert_int_eq(meta->maxLayerSize, 240);
-        ck_assert_int_eq(meta->nbLayers, 17);
+        ck_assert_int_eq(meta->inputSize, 2);
+        ck_assert_int_eq(meta->nbLayers, 2);
         ALG_DestroyFileMetadata(meta);
         fclose(file);
     } else {

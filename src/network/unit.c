@@ -16,6 +16,7 @@ ALG_Unit *ALG_CreateUnit(size_t size)
 
     u->_nbWeights = size;
     u->_weights = NULL;
+    u->_bias = 0;
 
     // Input units does not have weights
     if (u->_nbWeights > 0) {

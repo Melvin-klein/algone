@@ -35,6 +35,8 @@ START_TEST (test_append_layer_to_network)
     ck_assert_int_eq(n->_nbMaxLayer, 2);
     ck_assert_int_eq(n->_nbLayers, 2);
 
+    ck_assert_ptr_eq(n->_lastLayer, n->_layers[n->_nbLayers - 1]);
+
     ck_assert_int_eq(l->_nbUnits, 3);
     ck_assert_double_eq(l->_units[0]->_weights[0], 1.);
     ck_assert_double_eq(l->_units[0]->_weights[1], 2.);
@@ -67,13 +69,15 @@ START_TEST (test_create_layer_from_vector_in_network)
     ALG_CreateLayerFromVectorInNetwork(n, v);
     ck_assert_int_eq(n->_nbLayers, 2);
 
+    ck_assert_ptr_eq(n->_lastLayer, n->_layers[n->_nbLayers - 1]);
+
     ck_assert_int_eq(n->_layers[n->_nbLayers - 1]->_nbUnits, 3);
-    ck_assert_double_eq(n->_layers[n->_nbLayers - 1]->_units[0]->_weights[0], 1.);
-    ck_assert_double_eq(n->_layers[n->_nbLayers - 1]->_units[0]->_weights[1], 2.);
-    ck_assert_double_eq(n->_layers[n->_nbLayers - 1]->_units[1]->_weights[0], 3.);
-    ck_assert_double_eq(n->_layers[n->_nbLayers - 1]->_units[1]->_weights[1], 4.);
-    ck_assert_double_eq(n->_layers[n->_nbLayers - 1]->_units[2]->_weights[0], 5.);
-    ck_assert_double_eq(n->_layers[n->_nbLayers - 1]->_units[2]->_weights[1], 6.);
+    ck_assert_double_eq(n->_lastLayer->_units[0]->_weights[0], 1.);
+    ck_assert_double_eq(n->_lastLayer->_units[0]->_weights[1], 2.);
+    ck_assert_double_eq(n->_lastLayer->_units[1]->_weights[0], 3.);
+    ck_assert_double_eq(n->_lastLayer->_units[1]->_weights[1], 4.);
+    ck_assert_double_eq(n->_lastLayer->_units[2]->_weights[0], 5.);
+    ck_assert_double_eq(n->_lastLayer->_units[2]->_weights[1], 6.);
     ALG_DestroyNetwork(n);
     ALG_DestroyVector(v);
 }
