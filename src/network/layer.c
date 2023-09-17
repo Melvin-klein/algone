@@ -50,7 +50,7 @@ void ALG_CreateLayerInNetwork(ALG_Network *n, size_t size)
     if (n->_nbLayers == 1) {
         l = ALG_CreateLayer(size, 0);
     } else {
-        l = ALG_CreateLayer(size, n->_layers[n->_nbLayers - 2]->_nbUnits);
+        l = ALG_CreateLayer(size, (int) n->_layers[n->_nbLayers - 2]->_nbUnits);
     }
 
     n->_layers[n->_nbLayers - 1] = l;
@@ -59,7 +59,7 @@ void ALG_CreateLayerInNetwork(ALG_Network *n, size_t size)
 
 ALG_Layer* ALG_CreateLayerFromVector(ALG_Vector *v, int nbUnits)
 {
-    int nbWeights = (int) v->size / nbUnits;
+    int nbWeights = ((int) v->size - nbUnits) / nbUnits;
 
     ALG_Layer *l = ALG_CreateLayer(nbUnits, nbWeights);
 
@@ -69,10 +69,16 @@ ALG_Layer* ALG_CreateLayerFromVector(ALG_Vector *v, int nbUnits)
         return NULL;
     }
 
+    int pos = 0;
+
     for (int i = 0; i < nbUnits; i++) {
         for (int j = 0; j < nbWeights; j++) {
-            l->_units[i]->_weights[j] = ALG_GetVectorValueAt(v, i * nbWeights + j);
+            l->_units[i]->_weights[j] = ALG_GetVectorValueAt(v, pos);
+            pos++;
         }
+
+        l->_units[i]->_bias = ALG_GetVectorValueAt(v, pos);
+        pos++;
     }
 
     return l;
@@ -107,13 +113,23 @@ void ALG_AppendLayerToNetwork(ALG_Layer *l, ALG_Network *n)
 
 void ALG_CreateLayerFromVectorInNetwork(ALG_Network *n, ALG_Vector *v)
 {
-    size_t nbPreviousLayerUnits = n->_layers[n->_nbLayers - 1]->_nbUnits;
+    int nbPreviousLayerUnits = (int) n->_lastLayer->_nbUnits;
 
-    if (v->size % nbPreviousLayerUnits != 0) {
-        ALG_SetError(ALG_INCOMPATIBLE_ERROR, "Can't create a layer from vector that its size is not a multiple of the number of requested units", __FILE__, __LINE__);
+    int nbUnits = 0;
+    int tmpSize = v->size;
+
+    while (tmpSize > 0) {
+        // +1 is for the biais
+        tmpSize -= (nbPreviousLayerUnits + 1);
+
+        if (tmpSize < 0) {
+            ALG_SetError(ALG_INCOMPATIBLE_ERROR, "Can't create a layer from vector that its size is not a multiple of the number of requested units", __FILE__, __LINE__);
+
+            return;
+        }
+
+        nbUnits += 1;
     }
-
-    int nbUnits = v->size / (int) nbPreviousLayerUnits;
 
     ALG_Layer *l = ALG_CreateLayerFromVector(v, nbUnits);
     ALG_AppendLayerToNetwork(l, n);

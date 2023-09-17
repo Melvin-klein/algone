@@ -3,6 +3,19 @@
 #include "network_test.h"
 #include "../src/algone.h"
 
+START_TEST (test_create_network)
+{
+    ALG_Network* n = ALG_CreateNetwork(10, 2);
+    ck_assert_int_eq(n->_nbLayers, 1);
+    ck_assert_ptr_nonnull(n->_layers);
+    ck_assert_ptr_nonnull(n->_lastLayer);
+    ck_assert_ptr_eq(n->_lastLayer, n->_layers[n->_nbLayers - 1]);
+    ck_assert_int_eq(n->_layers[0]->_nbUnits, 10);
+    ALG_DestroyNetwork(n);
+    ck_assert_int_eq(2, 2);
+}
+END_TEST
+
 START_TEST (test_create_bare_network)
 {
     ALG_Network* n = ALG_CreateBareNetwork(10);
@@ -99,6 +112,7 @@ Suite *network_suite(void)
     /* Core test case */
     tc_core = tcase_create("Core");
 
+    tcase_add_test(tc_core, test_create_network);
     tcase_add_test(tc_core, test_create_bare_network);
     tcase_add_test(tc_core, test_create_network_from_file);
     tcase_add_test(tc_core, test_fill_network_input);

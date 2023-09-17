@@ -9,14 +9,14 @@
 #include "../math/activation.h"
 #include "../file/file_tools.h"
 
-ALG_Network* ALG_CreateNetwork(int inputSize, int nbLayers)
+ALG_Network* ALG_CreateNetwork(int inputSize, int nbMaxLayers)
 {
     ALG_Network *n = ALG_CreateBareNetwork(inputSize);
 
     // +1 is for the input layer
-    nbLayers += 1;
+    nbMaxLayers += 1;
 
-    ALG_Layer **ptr = realloc(n->_layers, sizeof(ALG_Layer) * nbLayers);
+    ALG_Layer **ptr = realloc(n->_layers, sizeof(ALG_Layer) * nbMaxLayers);
 
     if (ptr == NULL) {
         ALG_SetError(ALG_MEMORY_ALLOCATION_ERROR, "Could not allocate memory", __FILE__, __LINE__);
@@ -25,8 +25,9 @@ ALG_Network* ALG_CreateNetwork(int inputSize, int nbLayers)
     }
 
     n->_layers = ptr;
-    n->_nbMaxLayer = nbLayers;
-    n->_lastLayer = n->_layers[1];
+    n->_nbLayers = 1;
+    n->_nbMaxLayer = nbMaxLayers;
+    n->_lastLayer = n->_layers[0];
 
     return n;
 }
