@@ -64,8 +64,7 @@ START_TEST (test_append_layer_to_network_fail_network_and_layer_not_compatible)
 }
 END_TEST
 
-START_TEST (test_create_layer_from_vector_in_network)
-{
+START_TEST (test_create_layer_from_vector_in_network) {
     ALG_Vector *v = ALG_CreateVectorFromString("1 2 3 4 5 6");
     ALG_Network *n = ALG_CreateBareNetwork(2);
     ALG_CreateLayerFromVectorInNetwork(n, v);
@@ -83,7 +82,6 @@ START_TEST (test_create_layer_from_vector_in_network)
     ALG_DestroyNetwork(n);
     ALG_DestroyVector(v);
 }
-END_TEST
 
 Suite *layer_suite(void)
 {

@@ -1,8 +1,6 @@
 #ifndef ALGONE_ERROR_H
 #define ALGONE_ERROR_H
 
-#define ALG_MEMORY_ALLOC_ERROR "Could not allocate memory."
-
 #include "stdbool.h"
 #include "string.h"
 

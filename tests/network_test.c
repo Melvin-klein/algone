@@ -87,10 +87,9 @@ START_TEST (test_forward)
 }
 END_TEST
 
-START_TEST (test_forward_fail_inputs_not_compatible)
-{
+START_TEST (test_forward_fail_inputs_not_compatible) {
     FILE *file = fopen("tests/factory/basic_network.alg", "r");
-    ALG_Network* n = ALG_CreateNetworkFromFile(file);
+    ALG_Network *n = ALG_CreateNetworkFromFile(file);
     ALG_Vector *inputs = ALG_CreateVectorFromString("1 1 1 1");
 
     ALG_Forward(n, inputs);
@@ -100,7 +99,6 @@ START_TEST (test_forward_fail_inputs_not_compatible)
 
     ALG_DestroyNetwork(n);
 }
-END_TEST
 
 Suite *network_suite(void)
 {

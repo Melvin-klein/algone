@@ -6,6 +6,7 @@
 
 **Description** : The Network structure represent the entire neural network.
 
+<<<<<<< HEAD
 | Variable  | Type          | Accessibility | Description                         |
 |-----------|---------------|---------------|-------------------------------------|
 | _layers   | `ALG_Layer**` | Read Only     | An array the network layers         |
@@ -18,6 +19,18 @@
 **Type** : Function
 
 **Prototype** : `Network *ALG_CreateNetwork(int inputSize)`
+=======
+| Variable     | Type     | Accessibility | Description |
+|--------------|----------|---------------|-------------|
+
+---
+
+### `ALG_NetworkCreate()`
+
+**Type** : Function
+
+**Prototype** : `Network *ALG_NetworkCreate(int inputSize)`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Create an artificial neural network with the first input layer.
 
@@ -35,11 +48,19 @@
 
 ---
 
+<<<<<<< HEAD
 ### `ALG_AddLayerToNetwork()`
 
 **Type** : Function
 
 **Prototype** : `void ALG_AddLayerToNetwork(ALG_Network *n, size_t size)`
+=======
+### `ALG_NetworkAddLayer()`
+
+**Type** : Function
+
+**Prototype** : `void ALG_NetworkAddLayer(ALG_Network *n, size_t size)`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Create and append a new layer to a network.
 
@@ -58,7 +79,11 @@
 
 ---
 
+<<<<<<< HEAD
 ### `ALG_DestroyNetwork()`
+=======
+### `ALG_NetworkDestroy()`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Type** : Function
 
@@ -93,6 +118,7 @@
 | Variable | Type         | Accessibility | Description                       |
 |----------|--------------|---------------|-----------------------------------|
 | _units   | `ALG_Unit**` | Read Only     | The units contained in the layer. |
+<<<<<<< HEAD
 | _nbUnits | `size_t`     | Read Only     | The number of units.              |
 
 ---
@@ -102,6 +128,17 @@
 **Type** : Function
 
 **Prototype** : `ALG_Layer *ALG_CreateLayer(size_t size, ALG_Layer *previousLayer)`
+=======
+| _size    | `size_t`     | Read Only     | The number of units               |
+
+---
+
+### `ALG_LayerCreate()`
+
+**Type** : Function
+
+**Prototype** : `ALG_Layer *ALG_LayerCreate(size_t size, ALG_Layer *previousLayer)`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Create a new Layer.
 
@@ -120,11 +157,19 @@
 
 ---
 
+<<<<<<< HEAD
 ### `ALG_DestroyLayer()`
 
 **Type** : Function
 
 **Prototype** : `void ALG_DestroyLayer(ALG_Layer* l)`
+=======
+### `ALG_LayerDestroy()`
+
+**Type** : Function
+
+**Prototype** : `void ALG_LayerDestroy(ALG_Layer* l)`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Free memory of a layer.
 
@@ -152,6 +197,7 @@
 
 **Description** : A Unit represent a network simple computational unit.
 
+<<<<<<< HEAD
 | Variable   | Type      | Accessibility | Description                                  |
 |------------|-----------|---------------|----------------------------------------------|
 | output     | `double`  | Read/Write    | The computed output of the artificial neuron |
@@ -166,6 +212,22 @@
 **Type** : Function
 
 **Prototype** : `ALG_Unit *ALG_CreateUnit(size_t size)`
+=======
+| Variable | Type      | Accessibility | Description                                  |
+|----------|-----------|---------------|----------------------------------------------|
+| output   | `double`  | Read/Write    | The computed output of the artificial neuron |
+| _weights | `*double` | Read Only     | The weights values                           |
+| _size    | `size_t`  | Read Only     | The number of weights                        |
+| _bias    | `double`  | Read Only     | The computed bias                            |
+
+---
+
+### `ALG_UnitCreate()`
+
+**Type** : Function
+
+**Prototype** : `ALG_Unit *ALG_UnitCreate(size_t size)`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Create a new Unit.
 
@@ -183,11 +245,19 @@
 
 ---
 
+<<<<<<< HEAD
 ### `ALG_DestroyUnit()`
 
 **Type** : Function
 
 **Prototype** : `void ALG_DestroyUnit(ALG_Unit *u)`
+=======
+### `ALG_UnitDestroy()`
+
+**Type** : Function
+
+**Prototype** : `void ALG_UnitDestroy(ALG_Unit *u)`
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Free memory of a unit.
 

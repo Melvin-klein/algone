@@ -1,6 +1,10 @@
 # Welcome to Algone Library
 
+<<<<<<< HEAD
 Algone is a library for **machine learning** and **data science**. It is written in C by me as a student. Because I learned C by myself, **please, don't use Algone in production**, I can't give any guarantee that Algone will work properly despite the unit tests I've set up.
+=======
+Algone is a library for **machine learning** and **data science**. It is written in C by myself as a student. Because I learned C by myself, **please, don't use Algone in production**, I can't give any guarantee that Algone will work properly despite the unit tests I've set up.
+>>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 Contributions are open and welcome for every one :D
 

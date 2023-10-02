@@ -12,6 +12,7 @@
 int main(void)
 {
     int num_failed;
+
     Suite *s_unit, *s_network, *s_layer, *s_math, *s_vec, *s_file_tools;
     SRunner *sr;
 
