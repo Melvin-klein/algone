@@ -2,8 +2,8 @@
 #include "stdio.h"
 
 #include "matrix.h"
-#include "../../../../Downloads/algone-dev/src/debug/debug.h"
-#include "../../../../Downloads/algone-dev/src/error/error.h"
+#include "../debug/debug.h"
+#include "../error/error.h"
 
 ALG_Matrix *ALG_CreateMatrix(size_t rows, size_t columns, double v)
 {

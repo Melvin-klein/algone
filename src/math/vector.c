@@ -3,7 +3,7 @@
 #include "stdio.h"
 
 #include "vector.h"
-#include "../../../../Downloads/algone-dev/src/error/error.h"
+#include "../error/error.h"
 
 ALG_Vector* ALG_CreateVector(int size)
 {
