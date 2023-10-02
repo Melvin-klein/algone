@@ -57,5 +57,8 @@ utests: build
 	$(CC) -o $(BINDIR)/utests_algone $(BUILDDIR)/utests/main.o -L./bin -lalgone
 	./$(BINDIR)/utests_algone
 
+wasm: build
+	emcc -s FORCE_FILESYSTEM -s EXIT_RUNTIME=1 -s WASM=1 wasm/wrapper.c -o wasm/build/algone.js
+
 clean:
 	$(RM) -r $(BUILDDIR) $(BINDIR)

@@ -1,6 +1,7 @@
 # Building dirs
 bin/
 build/
+wasm/build
 
 # OS and Software folders
 .vscode
