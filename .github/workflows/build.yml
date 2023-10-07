@@ -115,6 +115,9 @@ jobs:
           echo "========"
           ls wasm
 
+      - name: Emscripten version
+        run: emcc --version
+
       - name: Create WASM build
         run: make wasm
 
