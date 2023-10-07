@@ -110,7 +110,7 @@ jobs:
           cd ../
 
       - name: Create Wasm build directory
-        run: mkdir ./wasm/build
+        run: mkdir -p ./wasm/build
 
       - name: Create WASM build
         run: make wasm
