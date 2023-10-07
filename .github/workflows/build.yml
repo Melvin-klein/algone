@@ -99,6 +99,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Create Wasm build directory
+        run: mkdir -p ./wasm/build
+
       - name: Install Emscripten
         run : |
           git clone https://github.com/emscripten-core/emsdk.git
@@ -111,9 +114,6 @@ jobs:
           ls
           echo "========"
           ls wasm
-
-      - name: Create Wasm build directory
-        run: mkdir -p ./wasm/build
 
       - name: Create WASM build
         run: make wasm
