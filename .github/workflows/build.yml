@@ -108,6 +108,7 @@ jobs:
           ./emsdk activate latest
           source ./emsdk_env.sh
           cd ../
+          ls
 
       - name: Create WASM build
         run: make wasm
