@@ -102,8 +102,18 @@ jobs:
       - name: Create Wasm build directory
         run: mkdir -p ./wasm/build
 
-      - name: Install Emscripten
-        run : |
+#      - name: Install Emscripten
+#        run : |
+#          git clone https://github.com/emscripten-core/emsdk.git
+#          cd emsdk
+#          git pull
+#          ./emsdk install latest
+#          ./emsdk activate latest
+#          source ./emsdk_env.sh
+#          cd ../
+
+      - name: Create WASM build
+        run: |
           git clone https://github.com/emscripten-core/emsdk.git
           cd emsdk
           git pull
@@ -111,15 +121,7 @@ jobs:
           ./emsdk activate latest
           source ./emsdk_env.sh
           cd ../
-          ls
-          echo "========"
-          ls wasm
-
-      - name: Emscripten version
-        run: emcc --version
-
-      - name: Create WASM build
-        run: make wasm
+          make wasm
 
       - name: Archive WASM
         run: zip -r algone-wasm.zip wasm/build/algone.wasm wasm/build/algone.js
