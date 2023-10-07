@@ -108,6 +108,9 @@ jobs:
           ./emsdk activate latest
           source ./emsdk_env.sh
           cd ../
+          ls
+          echo "========"
+          ls wasm
 
       - name: Create Wasm build directory
         run: mkdir -p ./wasm/build
