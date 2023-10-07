@@ -102,23 +102,19 @@ jobs:
       - name: Create Wasm build directory
         run: mkdir -p ./wasm/build
 
-#      - name: Install Emscripten
-#        run : |
-#          git clone https://github.com/emscripten-core/emsdk.git
-#          cd emsdk
-#          git pull
-#          ./emsdk install latest
-#          ./emsdk activate latest
-#          source ./emsdk_env.sh
-#          cd ../
-
-      - name: Create WASM build
-        run: |
+      - name: Install Emscripten
+        run : |
           git clone https://github.com/emscripten-core/emsdk.git
           cd emsdk
           git pull
           ./emsdk install latest
           ./emsdk activate latest
+          source ./emsdk_env.sh
+          cd ../
+
+      - name: Create WASM build
+        run: |
+          cd emsdk
           source ./emsdk_env.sh
           cd ../
           make wasm
