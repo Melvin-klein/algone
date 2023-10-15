@@ -1,4 +1,7 @@
-char* version()
+#include "emscripten.h"
+
+EMSCRIPTEN_KEEPALIVE
+int getAlgoneVersion()
 {
-    return "0.0.1";
+    return 28;
 }

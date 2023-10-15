@@ -121,7 +121,7 @@ jobs:
           make wasm
 
       - name: Archive WASM
-        run: zip -r algone-wasm.zip wasm/build/algone.wasm wasm/build/algone.js
+        run: zip -r algone-wasm.zip wasm/build/algone.wasm wasm/build/algone.js wasm/algone.d.ts
 
       - name: Upload WASM build
         uses: actions/upload-release-asset@v1
