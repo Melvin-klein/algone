@@ -58,7 +58,9 @@ utests: build
 	./$(BINDIR)/utests_algone
 
 wasm: build
-	emcc -s FORCE_FILESYSTEM -s EXIT_RUNTIME=1 -s WASM=1 ./wasm/wrapper.c -o ./wasm/build/algone.js
+	emcc -o ./wasm/build/algone.bc $(patsubst %, $(SRCDIR)/%, $(SRCS))
+	emar rcs ./wasm/build/libalgone.a ./wasm/build/algone.bc
+	emcc -s FORCE_FILESYSTEM -s EXIT_RUNTIME=1 -s WASM=1 -L./wasm/build -lalgone ./wasm/wrapper.c -o ./wasm/build/algone.js
 
 clean:
 	$(RM) -r $(BUILDDIR) $(BINDIR)
