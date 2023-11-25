@@ -13,19 +13,11 @@
 
 ---
 
-<<<<<<< HEAD
 ### `ALG_CreateMatrix()`
 
 **Type** : Function
 
 **Prototype** : `ALG_Matrix *ALG_CreateMatrix(size_t rows, size_t columns, double v)`
-=======
-### `ALG_MatrixCreate()`
-
-**Type** : Function
-
-**Prototype** : `ALG_Matrix *ALG_MatrixCreate(size_t rows, size_t columns, double v)`
->>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Create a matrix.
 
@@ -45,19 +37,11 @@
 
 ---
 
-<<<<<<< HEAD
 ### `ALG_FillMatrix()`
 
 **Type** : Function
 
 **Prototype** : `void ALG_FillMatrix(ALG_Matrix *m, double v)`
-=======
-### `ALG_MatrixFill()`
-
-**Type** : Function
-
-**Prototype** : `void ALG_MatrixFill(ALG_Matrix *m, double v)`
->>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Fill all the matrix `m` with the value `v`.
 
@@ -76,19 +60,11 @@
 
 ---
 
-<<<<<<< HEAD
 ### `ALG_DebugMatrix()`
 
 **Type** : Function
 
 **Prototype** : `void ALG_DebugMatrix(ALG_Matrix *m)`
-=======
-### `ALG_MatrixDebug()`
-
-**Type** : Function
-
-**Prototype** : `void ALG_MatrixDebug(ALG_Matrix *m)`
->>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Print information about the matrix in the console.
 
@@ -104,19 +80,11 @@ No mutations or return.
 
 ---
 
-<<<<<<< HEAD
 ### `ALG_DestroyMatrix()`
 
 **Type** : Function
 
 **Prototype** : `void ALG_DestroyMatrix(ALG_Matrix *m)`
-=======
-### `ALG_MatrixDestroy()`
-
-**Type** : Function
-
-**Prototype** : `void ALG_MatrixDestroy(ALG_Matrix *m)`
->>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
 
 **Description** : Free memory of the matrix `m`.
 
