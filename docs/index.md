@@ -23,3 +23,7 @@ Contributions are open and welcome for every one 😁
 ## What's next ?
 
 To learn how Algone works, you should read the [Get started](getting_started/installation.md) section.
+
+## Algone studio
+
+We are also developing Algone Studio which is a visual creator for neural networks. It's open source, [try it and enjoy](https://studio.algone.dev) !
