@@ -1,17 +1,25 @@
 # Welcome to Algone Library
 
-<<<<<<< HEAD
-Algone is a library for **machine learning** and **data science**. It is written in C by me as a student. Because I learned C by myself, **please, don't use Algone in production**, I can't give any guarantee that Algone will work properly despite the unit tests I've set up.
-=======
-Algone is a library for **machine learning** and **data science**. It is written in C by myself as a student. Because I learned C by myself, **please, don't use Algone in production**, I can't give any guarantee that Algone will work properly despite the unit tests I've set up.
->>>>>>> 06bc75c7962d99ddb5e24d1d73cc969058868712
+Algone is a **machine learning** and **data science** library written in C.
 
-Contributions are open and welcome for every one :D
+**Please, don't use Algone in production**. The library comes with any guarantee that it will work properly.
 
-## Organisation of documentation
+Contributions are open and welcome for every one 😁
+
+## Organisation of the documentation
 
 * [Get started](getting_started/installation.md) - Get an overview of how the library works.
 * [Tutorials](tutorials/mnist.md) - Learn step by step how to solve classic machine learning problems.
 * [References](references/networks.md) - Get the description of all elements available in Algone library.
 * [Download](https://github.com/Melvin-klein/algone/releases) - Download the library.
 
+## Installation
+
+1. Follow the [Download](https://github.com/Melvin-klein/algone/releases) link and extract the archive.
+2. Put header files in a folder and the `libalgone.a` in another one.
+3. Include the `algone.h` header by writting `#include "algone.h"`
+4. Specify folders where headers and lib are installed in your compilation command.
+
+## What's next ?
+
+To learn how Algone works, you should read the [Get started](getting_started/installation.md) section.
