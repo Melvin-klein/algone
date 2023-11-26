@@ -2,16 +2,18 @@
 
 Algone is a **machine learning** and **data science** library written in C.
 
-**Please, don't use Algone in production**. The library comes with any guarantee that it will work properly.
-
 Contributions are open and welcome for every one 😁
 
 ## Organisation of the documentation
 
 * [Get started](getting_started/installation.md) - Get an overview of how the library works.
-* [Tutorials](tutorials/mnist.md) - Learn step by step how to solve classic machine learning problems.
-* [References](references/networks.md) - Get the description of all elements available in Algone library.
+* [Tutorials](tutorials/mnist.md) - Learn step by step how to solve toy machine learning problems.
+* [References](references/networks.md) - Get the description of all available elements in Algone library.
 * [Download](https://github.com/Melvin-klein/algone/releases) - Download the library.
+
+!!! warning ""
+
+    **Please, don't use Algone in production**. The library comes with any guarantee that it will work properly.
 
 ## Installation
 

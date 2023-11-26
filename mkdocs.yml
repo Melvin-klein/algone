@@ -1,4 +1,4 @@
-site_name: Algone
+site_name: ""
 repo_url: https://github.com/Melvin-klein/algone
 repo_name: Melvin-klein/algone
 edit_uri: edit/master/docs/
@@ -6,6 +6,8 @@ theme:
   name: material
   logo: assets/logo.svg
   favicon: assets/favicon.ico
+  palette:
+    primary: black
   icon:
     repo: fontawesome/brands/git-alt
     edit: material/pencil 
@@ -32,3 +34,7 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
