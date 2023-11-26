@@ -86,7 +86,8 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
           mkdir ./include
-          xcopy /S /Y "*.h" "include"
+          ls
+          xcopy /S /Y ".\src\*.h" ".\include"
 
       - name: Create archive
         run: tar czf algone-${{ matrix.os }}.tar.gz ./bin/libalgone.a ./include
