@@ -62,11 +62,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Update Apt
-        if: ${{ matrix.os }} == ubuntu-latest
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: sudo apt-get update
 
       - name: Install dependencies
-        if: ${{ matrix.os }} == ubuntu-latest
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: sudo apt install -y check automake autoconf libtool pkg-config texinfo
 
       - name: Checkout
