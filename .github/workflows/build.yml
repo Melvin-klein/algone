@@ -86,8 +86,8 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
           mkdir ./include
-          headers="`dir /S /B *.h`"
-          cp $headers ./include
+          for /f %A in ('dir /S /B *.h') do set "headers=%A"
+          copy %headers% .\include
 
       - name: Create archive
         run: tar czf algone-${{ matrix.os }}.tar.gz ./bin/libalgone.a ./include
