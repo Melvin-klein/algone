@@ -86,7 +86,7 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
           mkdir ./include
-          headers="`find ./src -type f -name "*.h"`"
+          headers="`dir /S /B *.h`"
           cp $headers ./include
 
       - name: Create archive
