@@ -7,7 +7,8 @@ theme:
   logo: assets/logo.svg
   favicon: assets/favicon.ico
   palette:
-    primary: black
+    primary: red
+    accent: red
   icon:
     repo: fontawesome/brands/git-alt
     edit: material/pencil 
@@ -18,16 +19,18 @@ theme:
     - content.action.edit
 nav:
     - Welcome: index.md
-    - 'Get started': 
-        - 'Installation': getting_started/installation.md
-        - 'Simple neural network': getting_started/simple_neural_network.md
+    - 'Documentation':
+        - 'Manage Data': documentation/manage_data.md
+        - 'Manage Networks': documentation/manage_networks.md
+        - 'File formats': documentation/file_formats.md
     - 'Tutorials':
         - 'MNIST': tutorials/mnist.md
     - References:
         - 'Networks': references/networks.md
         - 'Math': references/math.md
         - 'Debug and Errors': references/debug_and_error.md
-    - Download: https://github.com/Melvin-klein/algone/releases
+    - Studio: https://studio.algone.dev
+    - Download: downloads/downloads.md
 extra_javascript:
   - javascripts/katex.js
   - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
