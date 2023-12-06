@@ -23,7 +23,6 @@ nav:
         - 'Manage Data': documentation/manage_data.md
         - 'Manage Networks': documentation/manage_networks.md
         - 'Handle Errors': documentation/errors.md
-        - 'Files': documentation/files.md
         - 'File formats': documentation/file_formats.md
     - 'Tutorials':
         - 'MNIST': tutorials/mnist.md
