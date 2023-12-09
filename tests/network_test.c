@@ -67,6 +67,7 @@ START_TEST (test_fill_network_input)
     ck_assert_double_eq(n->_layers[0]->_units[2]->output, 3.);
 
     ALG_DestroyVector(inputs);
+    ALG_DestroyNetwork(n);
 }
 END_TEST
 
